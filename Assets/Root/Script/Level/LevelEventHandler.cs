@@ -14,6 +14,11 @@ public class LevelEventHandler : MonoBehaviour {
     public string levelName;
 
     /// <summary>
+    /// 难度等级
+    /// </summary>
+    public int level=0;
+
+    /// <summary>
     /// 点击消息处理委托
     /// </summary>
     /// <param name="str"></param>
@@ -42,6 +47,9 @@ public class LevelEventHandler : MonoBehaviour {
     void ReceiveClickMessage(string str) {
         if (str==levelName) {
             rectTransform.localScale = new Vector3(2, 2, 1);
+
+            DataManager.Instance.Current_Level = level;
+            Debug.Log("Current Level:"+DataManager.Instance.Current_Level);
         }
         else {
             rectTransform.localScale = new Vector3(1, 1,1);

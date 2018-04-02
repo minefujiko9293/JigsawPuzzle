@@ -20,6 +20,16 @@ public class DataManager : MonoBehaviour {
 		}
     }
 
+    /// <summary>
+    /// 当前难度
+    /// </summary>
+    public int Current_Level;
+
+    /// <summary>
+    /// 当前关卡
+    /// </summary>
+    public int Current_Mission;
+
 
     /// <summary>
     /// 加载Xml文件 

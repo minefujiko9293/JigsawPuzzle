@@ -16,6 +16,22 @@ public class LevelSelectHandler : MonoBehaviour {
 		direction = 1;
 
 		var missionData = DataManager.Instance.LoadMissions();
+        switch (DataManager.Instance.Current_Level) {
+            case 0:
+                Debug.Log("0-9");
+                break;
+            case 1:
+                Debug.Log("10-19");
+
+                break;
+            case 2:
+                Debug.Log("20-29");
+
+                break;
+            default:
+                break;
+        }
+        //to do bind data
 
 
 		isMove = true;
