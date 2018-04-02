@@ -10,17 +10,16 @@ using System.Xml;
 public class DataManager : MonoBehaviour {
     private static DataManager _instance = null;
     public static DataManager Instance {
-        get { return GetInstance(); }
+        get {
+			if (_instance == null) {
+				GameObject obj = new GameObject("DataManager");
+				_instance = obj.AddComponent<DataManager>();
+				DontDestroyOnLoad(obj);
+			}
+			return _instance;
+		}
     }
 
-    public static DataManager GetInstance() {
-        if (_instance == null) {
-            GameObject obj = new GameObject("DataManager");
-            _instance = obj.AddComponent<DataManager>();
-            DontDestroyOnLoad(obj);
-        }
-        return _instance;
-    }
 
     /// <summary>
     /// 加载Xml文件 
