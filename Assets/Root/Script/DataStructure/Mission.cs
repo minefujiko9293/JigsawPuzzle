@@ -4,7 +4,7 @@ public class Mission {
     /// <summary>
     /// 关卡ID
     /// </summary>
-    public string ID;
+    public int ID;
 
     /// <summary>
     /// 关卡是否解锁  

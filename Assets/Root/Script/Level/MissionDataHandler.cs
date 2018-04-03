@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MissionDataHandler : MonoBehaviour {
 
-	public string ID;
+	public int ID;
 	public bool IsUnlock = false;
 	public int Score = 0;
 

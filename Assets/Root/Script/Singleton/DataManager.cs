@@ -43,6 +43,7 @@ public class DataManager : MonoBehaviour {
         //为了跨平台及可读可写，需要使用Application.persistentDataPath
 		string filePath = Application.persistentDataPath + "/missions.xml";
 		//Debug.Log(filePath);
+		//C:/Users/Flyme/AppData/LocalLow/DefaultCompany/JigsawPuzzle/missions.xml
         if (!IOUntility.isFileExists(filePath)) {
 			xmlDoc.LoadXml(((TextAsset)Resources.Load("missions")).text);
             IOUntility.CreateFile(filePath, xmlDoc.InnerXml);
@@ -56,7 +57,7 @@ public class DataManager : MonoBehaviour {
         List<Mission> missions = new List<Mission>();
         foreach (XmlElement xe in missionNodes) {
             Mission l = new Mission();
-            l.ID = xe.GetAttribute("id");
+            l.ID = int.Parse(xe.GetAttribute("id"));
             l.Score = int.Parse(xe.GetAttribute("score"));
             //使用unlock属性来标识当前关卡是否解锁
             if (xe.GetAttribute("unlock") == "1") {

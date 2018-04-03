@@ -4,11 +4,20 @@ using System.Collections;
 public class LevelSelectHandler : MonoBehaviour {
 
 	private RectTransform rectTransform;
+	private GameObject[] missionCollections;
 
 	public void onMissionBack() {
 		t = 0f;
 		direction = 0;
 		isMove = true;
+
+		DataManager.Instance.Current_Mission=0;
+
+		for (int i = 0; i < 10; i++) {
+			var temp = missionCollections[i].GetComponent<RectTransform>();
+			temp.localScale = Vector3.one;
+		}
+
 	}
 
 	public void onLevelSelected() {
@@ -16,23 +25,13 @@ public class LevelSelectHandler : MonoBehaviour {
 		direction = 1;
 
 		var missionData = DataManager.Instance.LoadMissions();
-        switch (DataManager.Instance.Current_Level) {
-            case 0:
-                Debug.Log("0-9");
-                break;
-            case 1:
-                Debug.Log("10-19");
 
-                break;
-            case 2:
-                Debug.Log("20-29");
+		int current_level = DataManager.Instance.Current_Level;
 
-                break;
-            default:
-                break;
-        }
-        //to do bind data
-
+		for (int i = 0; i < 10; i++) {
+			var missionDataHandler = missionCollections[i].GetComponent<MissionDataHandler>();
+			missionDataHandler.DataBind(missionData[10 * current_level+i]);
+		}
 
 		isMove = true;
 	}
@@ -57,5 +56,11 @@ public class LevelSelectHandler : MonoBehaviour {
 	void Start() {
 		rectTransform = gameObject.GetComponent<RectTransform>();
 		targetPosition = new Vector3(-1024, 0, 0);
+
+		missionCollections = new GameObject[10];
+		for (int i = 0; i < 10; i++) {
+			string itemName = "MissionItem" + i.ToString();
+			missionCollections[i] = GameObject.Find(itemName);
+		}
 	}
 }

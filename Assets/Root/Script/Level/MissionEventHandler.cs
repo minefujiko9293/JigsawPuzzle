@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MissionEventHandler : MonoBehaviour {
     private EventTrigger eventTrigger;
     private MissionDataHandler missionDataHandler;
+	private RectTransform rectTransform;
 
     public Button btn_ok;
 
@@ -25,16 +26,23 @@ public class MissionEventHandler : MonoBehaviour {
     /// </summary>
     /// <param name="str"></param>
     void ReceiveClickMessage(string name) {
-        if (name==gameObject.name) {
-            Debug.Log(gameObject.name);
+		if (name == gameObject.name) {
+			Debug.Log(gameObject.name);
 
-            if (missionDataHandler.IsUnlock) {
-                btn_ok.interactable = true;
-            }
-            else {
-                btn_ok.interactable = false;
-            }
-        }
+			if (missionDataHandler.IsUnlock) {
+				btn_ok.interactable = true;
+				rectTransform.localScale = new Vector3(1.5f, 1.5f, 1);
+
+				DataManager.Instance.Current_Mission = missionDataHandler.ID;
+			}
+			else {
+				btn_ok.interactable = false;
+			}
+		}
+		else {
+			rectTransform.localScale = Vector3.one;
+
+		}
 
         
     }
@@ -59,16 +67,17 @@ public class MissionEventHandler : MonoBehaviour {
         eventTrigger.triggers.Add(entry);
 
         missionDataHandler = gameObject.GetComponent<MissionDataHandler>();
+		rectTransform = gameObject.GetComponent<RectTransform>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     void OnDestroy() {
         //解除点击事件处理函数
         MissionEventHandler.OnClickMessage -= ReceiveClickMessage;
-
     }
+
+	// Update is called once per frame
+	void Update() {
+
+	}
 }

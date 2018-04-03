@@ -52,7 +52,7 @@ public class LevelEventHandler : MonoBehaviour {
             Debug.Log("Current Level:"+DataManager.Instance.Current_Level);
         }
         else {
-            rectTransform.localScale = new Vector3(1, 1,1);
+			rectTransform.localScale = Vector3.one;
         }
     }
 
