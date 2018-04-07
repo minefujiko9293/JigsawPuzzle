@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: bc02fa1b5bbda974baa895edccb03983
-timeCreated: 1522737465
+timeCreated: 1523110689
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -20,6 +20,22 @@ TextureImporter:
     21300026: mission0_0_13
     21300028: mission0_0_14
     21300030: mission0_0_15
+    21300032: mission0_0
+    21300034: mission0_1
+    21300036: mission0_2
+    21300038: mission0_3
+    21300040: mission0_4
+    21300042: mission0_5
+    21300044: mission0_6
+    21300046: mission0_7
+    21300048: mission0_8
+    21300050: mission0_9
+    21300052: mission0_10
+    21300054: mission0_11
+    21300056: mission0_12
+    21300058: mission0_13
+    21300060: mission0_14
+    21300062: mission0_15
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -69,7 +85,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mission0_0_0
+      name: mission0_0
       rect:
         serializedVersion: 2
         x: 0
@@ -82,7 +98,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: mission0_0_1
+      name: mission0_1
       rect:
         serializedVersion: 2
         x: 512
@@ -95,7 +111,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: mission0_0_2
+      name: mission0_2
       rect:
         serializedVersion: 2
         x: 1024
@@ -108,7 +124,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: mission0_0_3
+      name: mission0_3
       rect:
         serializedVersion: 2
         x: 1536
@@ -121,7 +137,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: mission0_0_4
+      name: mission0_4
       rect:
         serializedVersion: 2
         x: 0
@@ -134,7 +150,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: mission0_0_5
+      name: mission0_5
       rect:
         serializedVersion: 2
         x: 512
@@ -147,7 +163,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: mission0_0_6
+      name: mission0_6
       rect:
         serializedVersion: 2
         x: 1024
@@ -160,7 +176,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: mission0_0_7
+      name: mission0_7
       rect:
         serializedVersion: 2
         x: 1536
@@ -173,7 +189,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: mission0_0_8
+      name: mission0_8
       rect:
         serializedVersion: 2
         x: 0
@@ -186,7 +202,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: mission0_0_9
+      name: mission0_9
       rect:
         serializedVersion: 2
         x: 512
@@ -199,7 +215,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: mission0_0_10
+      name: mission0_10
       rect:
         serializedVersion: 2
         x: 1024
@@ -212,7 +228,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: mission0_0_11
+      name: mission0_11
       rect:
         serializedVersion: 2
         x: 1536
@@ -225,7 +241,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: mission0_0_12
+      name: mission0_12
       rect:
         serializedVersion: 2
         x: 0
@@ -238,7 +254,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: mission0_0_13
+      name: mission0_13
       rect:
         serializedVersion: 2
         x: 512
@@ -251,7 +267,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: mission0_0_14
+      name: mission0_14
       rect:
         serializedVersion: 2
         x: 1024
@@ -264,7 +280,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: mission0_0_15
+      name: mission0_15
       rect:
         serializedVersion: 2
         x: 1536

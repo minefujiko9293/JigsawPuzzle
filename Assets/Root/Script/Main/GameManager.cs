@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+    public GameObject StartUI;
+    public GameObject MainUI;
+    public GameObject EndUI;
+
 	public GameObject blockPrefab;
 	public GridLayoutGroup gamePanel;
 
@@ -26,39 +30,50 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 		_instance = this;
 
-		StepCount = 0;
-
-		int side=DataManager.Instance.Current_Level+4;
-		float spacing = 5 * (2 + side - 1);
-		float cellSize = (500 - spacing) / side;
-
-		gamePanel.cellSize = new Vector2(cellSize, cellSize);
-		gamePanel.constraintCount = side;
-
-		int length=side*side;
-		CurrentIndex = new int[length];
-		blockCollections = new GameObject[length];
-		for (int i = 0; i < length; i++) {
-			CurrentIndex[i] = i;
-
-			GameObject newBlock = Instantiate(blockPrefab, gamePanel.transform,false) as GameObject;
-			newBlock.name = i.ToString();
-			blockCollections[i] = newBlock;
-
-		}
-		CurrentIndex = RandArray(CurrentIndex);
-
-		string spriteName = "Images/missions/mission" + DataManager.Instance.Current_Level + "_" + DataManager.Instance.Current_Mission;
-		//Debug.Log(spriteName);
-		var spriteBlocks = Resources.LoadAll<Sprite>(spriteName);
-		MatchSprite(blockCollections, spriteBlocks, CurrentIndex);
-
+        initTip();
+        initGame();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    void initTip() {
+        string spriteName = "Images/missions/mission_tip" + DataManager.Instance.Current_Mission;
+        var sprite= Resources.Load<Sprite>(spriteName);
+
+        StartUI.GetComponent<StartUIController>().SetTipImage(sprite);
+    }
+
+    public void StartGame() {
+        StartUI.SetActive(false);
+        MainUI.SetActive(true);
+    }
+
+    void initGame() {
+        StepCount = 0;
+
+        int side = DataManager.Instance.Current_Level + 4;
+        float spacing = 5 * (2 + side - 1);
+        float cellSize = (500 - spacing) / side;
+
+        gamePanel.cellSize = new Vector2(cellSize, cellSize);
+        gamePanel.constraintCount = side;
+
+        int length = side * side;
+        CurrentIndex = new int[length];
+        blockCollections = new GameObject[length];
+        for (int i = 0; i < length; i++) {
+            CurrentIndex[i] = i;
+
+            GameObject newBlock = Instantiate(blockPrefab, gamePanel.transform, false) as GameObject;
+            newBlock.name = i.ToString();
+            blockCollections[i] = newBlock;
+
+        }
+        CurrentIndex = RandArray(CurrentIndex);
+
+        string spriteName = "Images/missions/mission" + DataManager.Instance.Current_Mission;
+        //Debug.Log(spriteName);
+        var spriteBlocks = Resources.LoadAll<Sprite>(spriteName);
+        MatchSprite(blockCollections, spriteBlocks, CurrentIndex);
+    }
 
 	int[] RandArray(int[] arr) {
 		int[] newarr = new int[arr.Length];
@@ -95,9 +110,31 @@ public class GameManager : MonoBehaviour {
 
 		StepCount++;
 
+        var isComplete = CheckComplete();
+        Debug.Log(isComplete);
+
+
 	}
+
+    public bool CheckComplete() {
+        bool isComplete = true;
+        var length = CurrentIndex.Length;
+        for (int i = 0; i < length; i++) {
+            if (i!=CurrentIndex[i]) {
+                isComplete = false;
+                break;
+            }
+        }
+        return isComplete;
+    }
 
 	void OnDestroy() {
 		_instance = null;
 	}
+
+
+    // Update is called once per frame
+    void Update() {
+
+    }
 }
