@@ -2,10 +2,19 @@
 using System.Collections;
 using UnityEngine.UI;
 
+/// <summary>
+/// 游戏难度UI 的事件处理器
+/// </summary>
 public class LevelEventHandler : MonoBehaviour {
 
+	/// <summary>
+	/// UI的RectTransform
+	/// </summary>
     private RectTransform rectTransform;
 
+	/// <summary>
+	/// 难度确定按钮
+	/// </summary>
     public Button btn_ok;
 
     /// <summary>
@@ -33,10 +42,10 @@ public class LevelEventHandler : MonoBehaviour {
     /// 关卡UI被选择
     /// </summary>
     public void onClick() {
-        btn_ok.interactable = true;
+        btn_ok.interactable = true;		//只有选择了难度等级才不禁用确认按钮
 
-        if (OnClickMessage!=null) {
-            OnClickMessage(levelName);
+        if (OnClickMessage!=null) {		//判读点击事件的委托列表是否为空
+            OnClickMessage(levelName);	//执行点击事件(该事件下的委托函数都会被调用)
         }
     }
 
@@ -45,25 +54,33 @@ public class LevelEventHandler : MonoBehaviour {
     /// </summary>
     /// <param name="str"></param>
     void ReceiveClickMessage(string str) {
-        if (str==levelName) {
-            rectTransform.localScale = new Vector3(2, 2, 1);
+        if (str==levelName) {	//通过levelName判断当前接受事件的对象是否为目标对象
+			//当前对象为被点击对象时
 
-            DataManager.Instance.Current_Level = level;
+            rectTransform.localScale = new Vector3(2, 2, 1);	//修改UI大小
+
+            DataManager.Instance.Current_Level = level;		//设置数据管理器的当前难度等级
             Debug.Log("Current Level:"+DataManager.Instance.Current_Level);
         }
         else {
-			rectTransform.localScale = Vector3.one;
+			//当前对象不为被点击对象时
+
+			rectTransform.localScale = Vector3.one;		//复原UI大小
         }
     }
 
     void Start() {
 
+		//获取 RectTransform 组件
         rectTransform = gameObject.GetComponent<RectTransform>();
 
         //注册点击事件处理函数
         LevelEventHandler.OnClickMessage += ReceiveClickMessage;
     }
 
+	/// <summary>
+	/// 销毁对象时执行
+	/// </summary>
     void OnDestroy() {
         //解除点击事件处理函数
         LevelEventHandler.OnClickMessage -= ReceiveClickMessage;

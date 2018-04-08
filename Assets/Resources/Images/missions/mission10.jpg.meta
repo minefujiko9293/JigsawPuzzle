@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 1b723626b05bd8943a201de92e11e873
-timeCreated: 1523110728
+timeCreated: 1523152548
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -73,12 +73,7 @@ TextureImporter:
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings:
-  - buildTarget: Standalone
-    maxTextureSize: 2048
-    textureFormat: -1
-    compressionQuality: 50
-    allowsAlphaSplitting: 0
+  buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -87,9 +82,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 360
-        width: 90
-        height: 90
+        y: 1638.4
+        width: 409.6
+        height: 409.6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -99,10 +94,10 @@ TextureImporter:
       name: mission10_1
       rect:
         serializedVersion: 2
-        x: 90
-        y: 360
-        width: 90
-        height: 90
+        x: 409
+        y: 1638.4
+        width: 409.6
+        height: 409.6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,10 +107,10 @@ TextureImporter:
       name: mission10_2
       rect:
         serializedVersion: 2
-        x: 180
-        y: 360
-        width: 90
-        height: 90
+        x: 818
+        y: 1638.4
+        width: 409.6
+        height: 409.6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,10 +120,10 @@ TextureImporter:
       name: mission10_3
       rect:
         serializedVersion: 2
-        x: 270
-        y: 360
-        width: 90
-        height: 90
+        x: 1227
+        y: 1638.4
+        width: 409.6
+        height: 409.6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,10 +133,10 @@ TextureImporter:
       name: mission10_4
       rect:
         serializedVersion: 2
-        x: 360
-        y: 360
-        width: 90
-        height: 90
+        x: 1636
+        y: 1638.4
+        width: 409.6
+        height: 409.6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,9 +147,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 270
-        width: 90
-        height: 90
+        y: 1229.4
+        width: 409.6
+        height: 409.6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,10 +159,10 @@ TextureImporter:
       name: mission10_6
       rect:
         serializedVersion: 2
-        x: 90
-        y: 270
-        width: 90
-        height: 90
+        x: 409
+        y: 1229.4
+        width: 409.6
+        height: 409.6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,10 +172,10 @@ TextureImporter:
       name: mission10_7
       rect:
         serializedVersion: 2
-        x: 180
-        y: 270
-        width: 90
-        height: 90
+        x: 818
+        y: 1229.4
+        width: 409.6
+        height: 409.6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,10 +185,10 @@ TextureImporter:
       name: mission10_8
       rect:
         serializedVersion: 2
-        x: 270
-        y: 270
-        width: 90
-        height: 90
+        x: 1227
+        y: 1229.4
+        width: 409.6
+        height: 409.6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,10 +198,10 @@ TextureImporter:
       name: mission10_9
       rect:
         serializedVersion: 2
-        x: 360
-        y: 270
-        width: 90
-        height: 90
+        x: 1636
+        y: 1229.4
+        width: 409.6
+        height: 409.6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,9 +212,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 180
-        width: 90
-        height: 90
+        y: 820.4
+        width: 409.6
+        height: 409.6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,10 +224,10 @@ TextureImporter:
       name: mission10_11
       rect:
         serializedVersion: 2
-        x: 90
-        y: 180
-        width: 90
-        height: 90
+        x: 409
+        y: 820.4
+        width: 409.6
+        height: 409.6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,10 +237,10 @@ TextureImporter:
       name: mission10_12
       rect:
         serializedVersion: 2
-        x: 180
-        y: 180
-        width: 90
-        height: 90
+        x: 818
+        y: 820.4
+        width: 409.6
+        height: 409.6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -255,10 +250,10 @@ TextureImporter:
       name: mission10_13
       rect:
         serializedVersion: 2
-        x: 270
-        y: 180
-        width: 90
-        height: 90
+        x: 1227
+        y: 820.4
+        width: 409.6
+        height: 409.6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,10 +263,10 @@ TextureImporter:
       name: mission10_14
       rect:
         serializedVersion: 2
-        x: 360
-        y: 180
-        width: 90
-        height: 90
+        x: 1636
+        y: 820.4
+        width: 409.6
+        height: 409.6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -282,9 +277,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 90
-        width: 90
-        height: 90
+        y: 411.4
+        width: 409.6
+        height: 409.6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -294,10 +289,10 @@ TextureImporter:
       name: mission10_16
       rect:
         serializedVersion: 2
-        x: 90
-        y: 90
-        width: 90
-        height: 90
+        x: 409
+        y: 411.4
+        width: 409.6
+        height: 409.6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -307,10 +302,10 @@ TextureImporter:
       name: mission10_17
       rect:
         serializedVersion: 2
-        x: 180
-        y: 90
-        width: 90
-        height: 90
+        x: 818
+        y: 411.4
+        width: 409.6
+        height: 409.6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -320,10 +315,10 @@ TextureImporter:
       name: mission10_18
       rect:
         serializedVersion: 2
-        x: 270
-        y: 90
-        width: 90
-        height: 90
+        x: 1227
+        y: 411.4
+        width: 409.6
+        height: 409.6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -333,10 +328,10 @@ TextureImporter:
       name: mission10_19
       rect:
         serializedVersion: 2
-        x: 360
-        y: 90
-        width: 90
-        height: 90
+        x: 1636
+        y: 411.4
+        width: 409.6
+        height: 409.6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -347,9 +342,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 90
-        height: 90
+        y: 2.399994
+        width: 409.6
+        height: 409.6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -359,10 +354,10 @@ TextureImporter:
       name: mission10_21
       rect:
         serializedVersion: 2
-        x: 90
-        y: 0
-        width: 90
-        height: 90
+        x: 409
+        y: 2.399994
+        width: 409.6
+        height: 409.6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -372,10 +367,10 @@ TextureImporter:
       name: mission10_22
       rect:
         serializedVersion: 2
-        x: 180
-        y: 0
-        width: 90
-        height: 90
+        x: 818
+        y: 2.399994
+        width: 409.6
+        height: 409.6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -385,10 +380,10 @@ TextureImporter:
       name: mission10_23
       rect:
         serializedVersion: 2
-        x: 270
-        y: 0
-        width: 90
-        height: 90
+        x: 1227
+        y: 2.399994
+        width: 409.6
+        height: 409.6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -398,10 +393,10 @@ TextureImporter:
       name: mission10_24
       rect:
         serializedVersion: 2
-        x: 360
-        y: 0
-        width: 90
-        height: 90
+        x: 1636
+        y: 2.399994
+        width: 409.6
+        height: 409.6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

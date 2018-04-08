@@ -113,9 +113,13 @@ public class DataManager : MonoBehaviour {
 	/// <param name="score">分数</param>
 	/// <param name="unlockNext">是否解锁下一关</param>
 	public void CompleteMission(int id, int score,bool unlockNext=true) {
+		var missionsData = Instance.LoadMissions();
+
+		score = Mathf.Max(score,missionsData[id].Score);
 		SetMission(id,true,score);	//更新本关卡信息
-		if (unlockNext) {
-			SetMission(id+1,true,0);	//更新本关卡信息
+
+		if (unlockNext && id<29) {
+			SetMission(id + 1, true, missionsData[id+1].Score);	//解锁下一关卡信息
 		}
 	}
 

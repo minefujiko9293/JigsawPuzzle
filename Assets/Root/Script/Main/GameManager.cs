@@ -10,12 +10,17 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	public GameSceneManager gameSceneManager;
+
     public GameObject StartUI;
     public GameObject MainUI;
     public GameObject EndUI;
 
+	public Text StepCounterText;
+
 	public GameObject blockPrefab;
 	public GridLayoutGroup gamePanel;
+	public float gamePanelSize;
 
 	public int[] CurrentIndex;
 	public GameObject[] blockCollections;
@@ -29,6 +34,10 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		_instance = this;
+
+		StartUI.SetActive(true);
+		MainUI.SetActive(false);
+		EndUI.SetActive(false);
 
         initTip();
         initGame();
@@ -51,7 +60,7 @@ public class GameManager : MonoBehaviour {
 
         int side = DataManager.Instance.Current_Level + 4;
         float spacing = 5 * (2 + side - 1);
-        float cellSize = (500 - spacing) / side;
+		float cellSize = (gamePanelSize - spacing) / side;
 
         gamePanel.cellSize = new Vector2(cellSize, cellSize);
         gamePanel.constraintCount = side;
@@ -109,10 +118,11 @@ public class GameManager : MonoBehaviour {
 		blockCollections[block2].GetComponent<Image>().sprite = b;
 
 		StepCount++;
+		StepCounterText.text = "已用步数：" + StepCount;
 
-        var isComplete = CheckComplete();
-        Debug.Log(isComplete);
-
+		if (CheckComplete()) {
+			GameComplete();
+		}
 
 	}
 
@@ -127,6 +137,44 @@ public class GameManager : MonoBehaviour {
         }
         return isComplete;
     }
+
+	void GameComplete() {
+		MainUI.SetActive(false);
+		EndUI.SetActive(true);
+
+		var level = DataManager.Instance.Current_Level;
+		int threeStart = (level + 4) * (level + 4);
+		int twoStart = (level + 4) * (level + 4 + 2);
+		int oneStart = (level + 4) * (level + 4 + 4);
+		int start = 1;
+
+		if (StepCount <= threeStart) {
+			start = 3;
+		}
+		else if (StepCount <= twoStart) {
+			start = 2;
+		}
+		else {
+			start = 1;
+		}
+		DataManager.Instance.CompleteMission(DataManager.Instance.Current_Mission, start);
+
+		EndUI.GetComponent<EndUIController>().SetScore(StepCount, start);
+	}
+
+	public void NextMission() {
+		DataManager.Instance.Current_Mission++;
+		if (DataManager.Instance.Current_Mission<10) {
+			DataManager.Instance.Current_Level = 0;
+		}
+		else if (DataManager.Instance.Current_Mission < 20) {
+			DataManager.Instance.Current_Level = 1;
+		}
+		else {
+			DataManager.Instance.Current_Level = 2;
+		}
+		gameSceneManager.GoMainScene();
+	}
 
 	void OnDestroy() {
 		_instance = null;

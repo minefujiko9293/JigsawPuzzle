@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+
+/// <summary>
+/// 关卡类
+/// </summary>
 public class Mission {
     /// <summary>
     /// 关卡ID

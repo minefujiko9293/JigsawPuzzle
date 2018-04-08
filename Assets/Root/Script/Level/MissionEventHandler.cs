@@ -3,11 +3,29 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+/// <summary>
+/// 关卡UI 的事件处理器
+/// </summary>
 public class MissionEventHandler : MonoBehaviour {
+
+	/// <summary>
+	/// 事件触发器 用于动态绑定事件
+	/// </summary>
     private EventTrigger eventTrigger;
+
+	/// <summary>
+	/// 关卡UI的数据处理器
+	/// </summary>
     private MissionDataHandler missionDataHandler;
+
+	/// <summary>
+	/// 关卡UI的RectTransform
+	/// </summary>
 	private RectTransform rectTransform;
 
+	/// <summary>
+	/// 关卡选择确认按钮
+	/// </summary>
     public Button btn_ok;
 
     /// <summary>
@@ -26,14 +44,14 @@ public class MissionEventHandler : MonoBehaviour {
     /// </summary>
     /// <param name="str"></param>
     void ReceiveClickMessage(string name) {
-		if (name == gameObject.name) {
+		if (name == gameObject.name) {	//通过name判断当前接受事件的对象是否为目标对象
 			Debug.Log(gameObject.name);
 
-			if (missionDataHandler.IsUnlock) {
-				btn_ok.interactable = true;
-				rectTransform.localScale = new Vector3(1.5f, 1.5f, 1);
+			if (missionDataHandler.IsUnlock) {	//如果点击中的关卡已经解锁
+				btn_ok.interactable = true;		//确认按钮设置为可用
+				rectTransform.localScale = new Vector3(1.5f, 1.5f, 1);	//设置关卡UI的缩放
 
-				DataManager.Instance.Current_Mission = missionDataHandler.ID;
+				DataManager.Instance.Current_Mission = missionDataHandler.ID;	//
 			}
 			else {
 				btn_ok.interactable = false;
@@ -41,10 +59,7 @@ public class MissionEventHandler : MonoBehaviour {
 		}
 		else {
 			rectTransform.localScale = Vector3.one;
-
 		}
-
-        
     }
 
     void OnPointerDownDelegate(PointerEventData data) {
