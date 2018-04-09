@@ -32,15 +32,15 @@ public class MissionEventHandler : MonoBehaviour {
     /// 点击消息处理委托
     /// </summary>
     /// <param name="str"></param>
-    public delegate void OnClickEventHandler(string str);
+    public delegate void OnClickHandler(string str);
 
     /// <summary>
     /// 点击事件
     /// </summary>
-    public static event OnClickEventHandler OnClickMessage;
+    public static event OnClickHandler OnClickEvent;
 
     /// <summary>
-    /// 点击相应逻辑
+    /// 点击响应的处理逻辑
     /// </summary>
     /// <param name="str"></param>
     void ReceiveClickMessage(string name) {
@@ -67,15 +67,15 @@ public class MissionEventHandler : MonoBehaviour {
     /// </summary>
     /// <param name="data"></param>
     void OnPointerDownDelegate(PointerEventData data) {
-        if (OnClickMessage != null) {   //如果点击事件的委托函数列表不为空
-            OnClickMessage(gameObject.name);    //执行点击事件(该事件下的委托函数都会被调用)
+        if (OnClickEvent != null) {   //如果点击事件的委托函数列表不为空
+            OnClickEvent(gameObject.name);    //执行点击事件(该事件下的委托函数都会被调用)
         }
     }
 
 	// Use this for initialization
 	void Start () {
         //注册点击事件处理函数
-        MissionEventHandler.OnClickMessage += ReceiveClickMessage;
+        MissionEventHandler.OnClickEvent += ReceiveClickMessage;
 
         #region  动态添加点击事件监听
 
@@ -105,7 +105,7 @@ public class MissionEventHandler : MonoBehaviour {
     /// </summary>
     void OnDestroy() {
         //解除点击事件处理函数
-        MissionEventHandler.OnClickMessage -= ReceiveClickMessage;
+        MissionEventHandler.OnClickEvent -= ReceiveClickMessage;
     }
 
 }

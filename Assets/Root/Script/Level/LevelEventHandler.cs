@@ -31,12 +31,12 @@ public class LevelEventHandler : MonoBehaviour {
     /// 点击消息处理委托
     /// </summary>
     /// <param name="str"></param>
-    public delegate void OnClickEventHandler(string str);
+    public delegate void OnClickHandler(string str);
 
     /// <summary>
     /// 点击事件
     /// </summary>
-    public static event OnClickEventHandler OnClickMessage;
+    public static event OnClickHandler OnClickEvent;
 
     /// <summary>
     /// 难度UI的点击响应
@@ -44,13 +44,13 @@ public class LevelEventHandler : MonoBehaviour {
     public void onClick() {
         btn_ok.interactable = true;		//只有选择了难度等级才不禁用确认按钮
 
-        if (OnClickMessage != null) {		//判读点击事件的委托列表是否为空
-            OnClickMessage(levelName);	//执行点击事件(该事件下的委托函数都会被调用)
+        if (OnClickEvent != null) {		//判读点击事件的委托(通俗讲就是分发)列表是否为空
+            OnClickEvent(levelName);	//执行(可以理解为分发)点击事件(该事件下的委托函数都会被调用)
         }
     }
 
     /// <summary>
-    /// 点击相应的处理逻辑
+    /// 点击响应的处理逻辑
     /// </summary>
     /// <param name="str"></param>
     void ReceiveClickMessage(string str) {
@@ -74,8 +74,8 @@ public class LevelEventHandler : MonoBehaviour {
         //获取 RectTransform 组件
         rectTransform = gameObject.GetComponent<RectTransform>();
 
-        //注册点击事件处理函数
-        LevelEventHandler.OnClickMessage += ReceiveClickMessage;
+		//注册点击事件处理函数 (就是把当前对象的点击响应的处理逻辑 加入点击事件的分发名单中)
+        LevelEventHandler.OnClickEvent += ReceiveClickMessage;
     }
 
     /// <summary>
@@ -83,7 +83,7 @@ public class LevelEventHandler : MonoBehaviour {
     /// </summary>
     void OnDestroy() {
         //解除点击事件处理函数
-        LevelEventHandler.OnClickMessage -= ReceiveClickMessage;
+        LevelEventHandler.OnClickEvent -= ReceiveClickMessage;
 
     }
 }
