@@ -51,7 +51,7 @@ public class MissionEventHandler : MonoBehaviour {
 				btn_ok.interactable = true;		//确认按钮设置为可用
 				rectTransform.localScale = new Vector3(1.5f, 1.5f, 1);	//设置关卡UI的缩放
 
-				DataManager.Instance.Current_Mission = missionDataHandler.ID;	//设置数据处理器的当前关卡
+				DataManager.Instance.Current_Mission = missionDataHandler.ID;	//设置数据管理器的当前关卡
 			}
 			else {  //如果点击的关卡尚未解锁
 				btn_ok.interactable = false;      //禁用确认按钮

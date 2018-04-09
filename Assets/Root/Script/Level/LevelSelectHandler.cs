@@ -42,7 +42,7 @@ public class LevelSelectHandler : MonoBehaviour {
 
 		var missionData = DataManager.Instance.LoadMissions();	//读取本地xml中的关卡数据
 
-		int current_level = DataManager.Instance.Current_Level;		//设置数据处理器的当前难度等级
+		int current_level = DataManager.Instance.Current_Level;		//设置数据管理器的当前难度等级
 
 		for (int i = 0; i < 10; i++) {	//设置这10个关卡UI的数据绑定
 			var missionDataHandler = missionCollections[i].GetComponent<MissionDataHandler>();

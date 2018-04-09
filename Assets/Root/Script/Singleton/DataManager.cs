@@ -8,13 +8,18 @@ using System.Xml;
 /// 单例模式
 /// </summary>
 public class DataManager : MonoBehaviour {
+
     private static DataManager _instance = null;
+
+	/// <summary>
+	/// 暴露Instance属性便于单例调用
+	/// </summary>
     public static DataManager Instance {
         get {
 			if (_instance == null) {
-				GameObject obj = new GameObject("DataManager");
-				_instance = obj.AddComponent<DataManager>();
-				DontDestroyOnLoad(obj);
+				GameObject obj = new GameObject("DataManager");	//创建空对象
+				_instance = obj.AddComponent<DataManager>();	//添加DataManager脚本组件
+				DontDestroyOnLoad(obj);							//设置不在场景切换时销毁
 			}
 			return _instance;
 		}
@@ -23,7 +28,7 @@ public class DataManager : MonoBehaviour {
     /// <summary>
     /// 当前难度
     /// </summary>
-    public int Current_Level;
+    public int Current_Level;	
 
     /// <summary>
     /// 当前关卡
@@ -42,23 +47,24 @@ public class DataManager : MonoBehaviour {
         //否则在本地创建配置文件的副本
         //为了跨平台及可读可写，需要使用Application.persistentDataPath
 		string filePath = Application.persistentDataPath + "/missions.xml";
-		//Debug.Log(filePath);
-		//C:/Users/Flyme/AppData/LocalLow/DefaultCompany/JigsawPuzzle/missions.xml
-        if (!IOUntility.isFileExists(filePath)) {
-			xmlDoc.LoadXml(((TextAsset)Resources.Load("missions")).text);
-            IOUntility.CreateFile(filePath, xmlDoc.InnerXml);
+
+		//检查是否存在配置文件
+        if (!IOUntility.isFileExists(filePath)) { //不存在
+			xmlDoc.LoadXml(((TextAsset)Resources.Load("missions")).text);	//加载Resources文件夹中的配置范本，拷贝其中内容
+			IOUntility.CreateFile(filePath, xmlDoc.InnerXml);	//使用IOUntility类方法创建配置文件
         }
-        else {
-            xmlDoc.Load(filePath);
+        else {	//存在
+            xmlDoc.Load(filePath);	//加载配置文件
         }
-        XmlElement root = xmlDoc.DocumentElement;
-		XmlNodeList missionNodes = root.SelectNodes("/missions/mission");
+
+        XmlElement root = xmlDoc.DocumentElement;	//读取配置文件中的元素
+		XmlNodeList missionNodes = root.SelectNodes("/missions/mission");	//查找xml配置文件中的mission节点
         //初始化关卡列表
         List<Mission> missions = new List<Mission>();
-        foreach (XmlElement xe in missionNodes) {
+        foreach (XmlElement xe in missionNodes) {	//遍历配置节点，把配置存在missons数组中
             Mission l = new Mission();
-            l.ID = int.Parse(xe.GetAttribute("id"));
-            l.Score = int.Parse(xe.GetAttribute("score"));
+            l.ID = int.Parse(xe.GetAttribute("id"));	//读取关卡id
+            l.Score = int.Parse(xe.GetAttribute("score"));	//读取关卡得分
             //使用unlock属性来标识当前关卡是否解锁
             if (xe.GetAttribute("unlock") == "1") {
                 l.UnLock = true;
@@ -67,10 +73,10 @@ public class DataManager : MonoBehaviour {
                 l.UnLock = false;
             }
 
-            missions.Add(l);
+            missions.Add(l);	//添加到数组
         }
 
-        return missions;
+        return missions;	//返回关卡信息数组
     }
 
 	/// <summary>
@@ -82,9 +88,13 @@ public class DataManager : MonoBehaviour {
 	private void SetMission(int id, bool unlock,int score) {
 		//创建Xml对象
 		XmlDocument xmlDoc = new XmlDocument();
+		//设置配置文件地址
 		string filePath = Application.persistentDataPath + "/missions.xml";
+		//加载文件
 		xmlDoc.Load(filePath);
+		//读取配置文件中的元素
 		XmlElement root = xmlDoc.DocumentElement;
+		//查找xml配置文件中的mission节点
 		XmlNodeList missionNodes = root.SelectNodes("/missions/mission");
 		foreach (XmlElement xe in missionNodes) {
 			//根据id找到对应的关卡
@@ -97,8 +107,7 @@ public class DataManager : MonoBehaviour {
 					xe.SetAttribute("unlock", "0");
 				}
 
-				xe.SetAttribute("score", score.ToString());
-
+				xe.SetAttribute("score", score.ToString());	//设置分数
 			}
 		}
 
@@ -113,12 +122,12 @@ public class DataManager : MonoBehaviour {
 	/// <param name="score">分数</param>
 	/// <param name="unlockNext">是否解锁下一关</param>
 	public void CompleteMission(int id, int score,bool unlockNext=true) {
-		var missionsData = Instance.LoadMissions();
+		var missionsData = Instance.LoadMissions();		//读取关卡配置
 
-		score = Mathf.Max(score,missionsData[id].Score);
+		score = Mathf.Max(score,missionsData[id].Score);	//只保存关卡的最高得分
 		SetMission(id,true,score);	//更新本关卡信息
 
-		if (unlockNext && id<29) {
+		if (unlockNext && id<29) {	//总共30关，防止越界
 			SetMission(id + 1, true, missionsData[id+1].Score);	//解锁下一关卡信息
 		}
 	}
